@@ -36,7 +36,6 @@ u_str = unicode('abcde')
 
 print isAString(u_str), isExactlyAString(u_str)
 
-
 def isStringLike(anobj):
     # this method is because basestring does not include "UserString"
     try:
@@ -45,4 +44,10 @@ def isStringLike(anobj):
         return False
     else:
         return True
+import UserString
+usrstr = UserString.UserString("userstring")
+print isAString(usrstr), isAString(usrstr)
 
+# 1.4 Aligning Strings
+print '|', "Left".ljust(20),'|', 'Right'.rjust(20), '|', 'Center'.center(20),'|'
+print ' Center '.center(20,'+')
