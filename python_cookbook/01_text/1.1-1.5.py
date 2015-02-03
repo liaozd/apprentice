@@ -45,9 +45,16 @@ def isStringLike(anobj):
     else:
         return True
 import UserString
-usrstr = UserString.UserString("userstring")
-print isAString(usrstr), isAString(usrstr)
+usr_str = UserString.UserString("userstring")
+print isAString(usr_str), isAString(usr_str)
 
 # 1.4 Aligning Strings
 print '|', "Left".ljust(20),'|', 'Right'.rjust(20), '|', 'Center'.center(20),'|'
 print ' Center '.center(20,'+')
+
+# 1.5 Trimming Space from the Ends of a String
+x = '   hej   '
+print '|', x.lstrip(), '|', x.rstrip(), '|', x.strip(), '|'
+
+x = 'xyxxyy hejxy yyx'
+print '|' + x.strip('xy') + '|'
