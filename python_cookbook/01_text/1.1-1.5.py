@@ -19,7 +19,7 @@ print ord('a')
 print chr(97)
 print ord(u'\u2020')
 print repr(unichr(8224))
-print map(ord, 'ciao')
+print "map(ord, 'ciao')", map(ord, 'ciao')
 print ''.join(map(chr, range(97,120)))
 
 # 1.3 Testing Whether an Object Is String-like
