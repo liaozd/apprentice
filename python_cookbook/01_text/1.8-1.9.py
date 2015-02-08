@@ -21,6 +21,8 @@ print "containsAny1 time: ", t1.timeit()
 
 # cookbook says this a quick way, but it doesn't
 import itertools
+
+
 def containsAny2(seq, aset):
     for item in itertools.ifilter(aset.__contains__, seq):
         """
@@ -79,3 +81,7 @@ def containsAll(astr, strset):
     return not strset.translate(notrans, astr)
 t4 = Timer("containsAnyStr(seq, aset)", "from __main__ import containsAnyStr, seq, aset")
 print "containsAnyStr time: ", t4.timeit()
+
+
+
+# 1.9 Simplifying Usage of Strings’ translate Method
