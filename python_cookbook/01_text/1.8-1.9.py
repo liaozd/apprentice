@@ -1,7 +1,8 @@
 #!/usr/bin/python
+# coding=utf-8
 from timeit import Timer
 
-# 1.8 Checking Whether a String Contains a Set of Characters
+# 1.8 Checking Whether a String Contains a Set of Characters #
 
 seq = "abcdefgh"
 aset = "bcd"
@@ -37,7 +38,7 @@ t2 = Timer("containsAny2(seq, aset)", "from __main__ import containsAny2, seq, a
 print "containsAny2 time: ", t2.timeit()
 
 
-# a pure set-based approach:
+# a pure set-based approach #
 def containsAny3(seq, aset):
     return bool(set(aset).intersection(seq))
 t3 = Timer("containsAny3(seq, aset)", "from __main__ import containsAny3, seq, aset")
@@ -47,6 +48,7 @@ print "set(aset).intersection(seq):", set(aset).intersection(seq)
 # a.difference(b) equall to set(a) - set(b)
 print "set(aset).difference(seq): ", set(aset).difference(seq)
 print "set(seq).intersection(aset):", set(seq).intersection(aset)
+
 
 def containsALL(seq, aset):
     """
@@ -70,6 +72,8 @@ notrans = string.maketrans('','')
 # Return a translation table suitable for passing to translate(),
 # that will map each character in from into the character at the
 # same position in to; from and to must have the same length.
+
+
 def containsAnyStr(astr, strset):
     return len(strset) != len(strset.translate(notrans, astr))
     # str.translate(table[, deletechars])
@@ -77,11 +81,36 @@ def containsAnyStr(astr, strset):
     # in the optional argument deletechars are removed, and the
     # remaining characters have been mapped through the given
     # translation table, which must be a string of length 256.
+
+
 def containsAll(astr, strset):
     return not strset.translate(notrans, astr)
 t4 = Timer("containsAnyStr(seq, aset)", "from __main__ import containsAnyStr, seq, aset")
 print "containsAnyStr time: ", t4.timeit()
 
 
+# 1.9 Simplifying Usage of Strings’ translate Method #
+def translator(frm='', to='', delete='', keep=None):
+    if len(to) == 1:
+        to = to * len(frm)
+    trans = string.maketrans(frm, to)
+    if keep is not None:
+        allchars = string.maketrans('', '')
+        delete = allchars.translate(allchars, keep.translate(allchars, delete))
 
-# 1.9 Simplifying Usage of Strings’ translate Method
+    def translate(s):
+        return s.translate(trans, delete)
+    return translate
+
+# Keep all digits
+digits_only = translator(keep=string.digits)
+print digits_only('Chris Perkings: 224-7992')
+
+
+# remove a set of characters
+no_digits = translator(delete=string.digits)
+print no_digits('Chris Perkins: 224-7992')
+
+# repace a set of characters
+digits_to_hash = translator(frm=string.digits, to='#')
+print digits_to_hash('Chris Perkins: 224-7992')
