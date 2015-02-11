@@ -20,7 +20,7 @@ t1 = Timer("containsAny1(seq, aset)", "from __main__ import containsAny1, seq, a
 print "containsAny1 time: ", t1.timeit()
 
 
-# cookbook says this a quick way, but it doesn't
+# cookbook says this a quick way, but it doesn't, why?
 import itertools
 
 
@@ -114,3 +114,6 @@ print no_digits('Chris Perkins: 224-7992')
 # repace a set of characters
 digits_to_hash = translator(frm=string.digits, to='#')
 print digits_to_hash('Chris Perkins: 224-7992')
+
+
+# 1.10 Filtering a String for a Set of Characters #
