@@ -62,14 +62,6 @@ target/
 # keyfile
 keyfile.py
 
-# token file
-access_token.txt
-
 # database file
 *.db
-# tmp file
-src/tmp
 
-# youtube video download page
-download/
-*.mp4
