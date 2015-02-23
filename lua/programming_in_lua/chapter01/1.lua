@@ -1,3 +1,5 @@
+#!/usr/bin/env lua
+
 -- defines a fractorial function
 function fact (n)
     if n == 0 then
@@ -11,3 +13,6 @@ print("enter a number:")
 a = io.read("*number")
 print(fact(a))
 
+--[[
+    print(10)    
+--]]
