@@ -8,13 +8,12 @@ DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 # SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(32))
 SECRET_KEY = os.environ.get('SECRET_KEY', '{{ secret_key }}')
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
-
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 settings.configure(
     DEBUG=DEBUG,
     SECRET_KEY=SECRET_KEY,
-    ALLOWED_HOSTS=ALLOWED_HOSTS,
+    # ALLOWED_HOSTS=ALLOWED_HOSTS,
     ROOT_URLCONF=__name__,
     MIDDLEWARE_CLASSES=(
         'django.middleware.common.CommonMiddleware',
