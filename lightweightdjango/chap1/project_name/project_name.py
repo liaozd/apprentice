@@ -2,6 +2,7 @@ import os
 import sys
 
 from django.conf import settings
+# This is project template
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
