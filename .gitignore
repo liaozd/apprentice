@@ -64,4 +64,4 @@ keyfile.py
 
 # database file
 *.db
-
+*.sqlite3

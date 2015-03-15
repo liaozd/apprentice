@@ -1,8 +1,14 @@
+from io import BytesIO
 import os
 import sys
+from PIL import Image
 
+from django import forms
 from django.conf import settings
-# This is project template
+from django.conf.urls import url
+from django.http import HttpResponse, HttpResponseBadRequest
+
+# This is created by project template
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
@@ -23,8 +29,30 @@ settings.configure(
     ),
 )
 
-from django.conf.urls import url
-from django.http import HttpResponse
+
+class ImageForm(forms.Form):
+    """Form to validate requested placeholder image."""
+
+    height = forms.IntegerField(min_value=1, max_value=2000)
+    width = forms.IntegerField(min_value=1, max_value=2000)
+
+    def generate(self, image_format='PNG'):
+        """Generate an image of the given type and return as raw bytes."""
+        height = self.cleaned_date['height']
+        width = self.cleaned_data['width']
+        image = Image.new('RGB', (width, height))
+        content = BytesIO()
+        image.save(content, image_format)
+
+
+def placeholder(request, width, height):
+    form = ImageForm({'height':height, 'width': width})
+    if form.is_valid():
+        height = form.cleaned_data['height']
+        width = form.cleaned_data['width']
+        return HttpResponse('Ok')
+    else:
+        return HttpResponseBadRequest('Invalid Image Request')
 
 
 def index(request):
@@ -32,7 +60,9 @@ def index(request):
 
 
 urlpatterns = (
-    url(r'^$', index),
+    url(r'^image/(?P<width>[0-9]+)x(?P<height>[0-9]+)/$', placeholder,
+        name='placeholder'),
+    url(r'^$', index, name='homepage'),
 )
 
 
@@ -41,9 +71,9 @@ if __name__ == "__main__":
 
     execute_from_command_line(sys.argv)
 
-# django-admin.py startproject foo --template=project_name
-# to start a new project by this template
+    # django-admin.py startproject placeholder --template=chap1/project_name
+    # to start a new project by this template
 
-# hostname $ export DEBUG=off
-# hostname $ export ALLOWED_HOSTS=localhost,example.com
-# hostname $ python hello.py runserver
+    # hostname $ export DEBUG=off
+    # hostname $ export ALLOWED_HOSTS=localhost,example.com
+    # hostname $ python hello.py runserver
