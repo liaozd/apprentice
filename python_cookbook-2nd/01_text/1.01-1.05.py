@@ -36,6 +36,7 @@ u_str = unicode('abcde')
 
 print isAString(u_str), isExactlyAString(u_str)
 
+
 def isStringLike(anobj):
     # this method is because basestring does not include "UserString"
     try:
