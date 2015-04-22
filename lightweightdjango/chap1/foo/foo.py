@@ -3,7 +3,7 @@ import sys
 
 from django.conf import settings
 
-DEBUG = os.environ.get('DEBUG', 'on') == 'on'
+DEBUG = os.environ.get('DEBUG', 'on') == 'off'
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '%l*27p5cx1fbjbbgdbo-59bfsih&@*i*r_*ff3z-jp%hi0qu7c')
 

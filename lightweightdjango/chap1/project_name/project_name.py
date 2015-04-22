@@ -2,7 +2,14 @@ import os
 import sys
 
 from django.conf import settings
-# This is project template
+# This is for a project template
+# RUN: django-admin.py startproject foo --template=project_name
+# to start a new project by this template
+
+# TO start the server
+# hostname $ export DEBUG=off
+# hostname $ export ALLOWED_HOSTS=localhost,example.com
+# hostname $ python hello.py runserver
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
@@ -40,10 +47,3 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)
-
-# django-admin.py startproject foo --template=project_name
-# to start a new project by this template
-
-# hostname $ export DEBUG=off
-# hostname $ export ALLOWED_HOSTS=localhost,example.com
-# hostname $ python hello.py runserver
