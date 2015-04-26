@@ -65,3 +65,6 @@ keyfile.py
 # database file
 *.db
 *.sqlite3
+
+# django static build forlder
+_build
