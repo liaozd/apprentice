@@ -11,6 +11,7 @@ ALLOWED_HOSTS = [
 
 settings.configure(
     DEBUG=True,
+    TEMPLATE_DEBUG=False,
     SECRET_KEY='b0mqvak1p2sqm6p#+8o8fyxf+ox(le)8&jh_5^sxa!=7!+wxj0',
     ROOT_URLCONF='sitebuilder.urls',
     MIDDLEWARE_CLASSES=(),
@@ -19,11 +20,18 @@ settings.configure(
         'django.contrib.staticfiles',
         'django.contrib.webdesign',
         'sitebuilder',
+        'compressor',
     ),
     STATIC_URL='/static/',
     SITE_PAGES_DIRECTORY=os.path.join(BASE_DIR, 'pages'),
     SITE_OUTPUT_DIRECTORY=os.path.join(BASE_DIR, '_build'),
     STATIC_ROOT=os.path.join(BASE_DIR, '_build', 'static'),
+    # STATICFILES_STORAGE='django.contrib.staticfiles.storage.CachedStaticFilesStorage',
+    STATIC_FINDERS=(
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'compressor.finders.CompressorFinder',
+    )
 )
 
 if __name__ == "__main__":
