@@ -1,4 +1,36 @@
 {% load webdesign %}
+
+{% block context %}
+{
+    "description": "Product Pricing Plans",
+    "keywords": "products,pricing,buy me",
+    "plans": [
+        {
+            "name": "Starter",
+            "price": "Free",
+            "class": "success",
+            "features": [1]
+        },
+        {
+            "name": "Basic",
+            "price": "$10 / month",
+            "class": "danger",
+            "features": [1, 2]
+        },
+        {
+            "name": "Enterprise",
+            "price": "$20 / month",
+            "class": "info",
+            "features": [1, 2, 3]
+        }
+    ],
+    "features": [
+        "Feature #1",
+        "Feature #2",
+        "Feature #3"
+    ]
+}
+{% endblock %}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -6,57 +38,33 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h4 class="text-center">Starter Plan - Free</h4>
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item">Feature #1</li>
-                    <li class="list-group-item disabled">Feature #2</li>
-                    <li class="list-group-item disabled">Feature #3</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-success" href="#">
-                        BUY NOW!
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h4 class="text-center">Basic Plan - $10 / month</h4>
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item">Feature #1</li>
-                    <li class="list-group-item">Feature #2</li>
-                    <li class="list-group-item disabled">Feature #3</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-danger" href="#">
-                        BUY NOW!
-                    </a>
+        {% for plan in plans %}
+            <div class="col-md-4">
+                <div class="panel panel-{{ plan.class }}">
+                    <div class="panel-heading">
+                        <h4 class="text-center">
+                            {{ plan.name }} Plan - {{ plan.price }}
+                        </h4>
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        {% for feature in features %}
+                            <li class="list-group-item
+                                {% if forloop.counter not in plan.features %}
+                                    aria-disabled
+                                {% endif %}">
+                                {{ feature }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="panel-footer">
+                        <a class="btn btn-lg btn-block btn-{{ plan.class }}"
+                           href="#">
+                            BUY NOW!
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h4 class="text-center">Enterprise Plan - $20 / month</h4>
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item">Feature #1</li>
-                    <li class="list-group-item">Feature #2</li>
-                    <li class="list-group-item">Feature #3</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-info" href="#">
-                        BUY NOW!
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="row">
         <div class="col-md-12">
