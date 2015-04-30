@@ -1,5 +1,4 @@
 {% load webdesign %}
-
 {% block context %}
 {
     "description": "Product Pricing Plans",
@@ -50,21 +49,20 @@
                         {% for feature in features %}
                             <li class="list-group-item
                                 {% if forloop.counter not in plan.features %}
-                                    aria-disabled
+                                disabled
                                 {% endif %}">
                                 {{ feature }}
                             </li>
-                        {% endfor %}
+                       {% endfor %}
                     </ul>
                     <div class="panel-footer">
-                        <a class="btn btn-lg btn-block btn-{{ plan.class }}"
-                           href="#">
+                        <a class="btn btn-lg btn-block btn-{{ plan.class }}" href="#">
                             BUY NOW!
                         </a>
                     </div>
                 </div>
             </div>
-        {% endfor %}
+       {% endfor %}
     </div>
     <div class="row">
         <div class="col-md-12">
