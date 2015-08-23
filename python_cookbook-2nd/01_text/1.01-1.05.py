@@ -45,9 +45,11 @@ def isStringLike(anobj):
         return False
     else:
         return True
+
 import UserString
 usr_str = UserString.UserString("userstring")
-print isAString(usr_str), isAString(usr_str)
+print isAString(usr_str)
+print isStringLike(usr_str)
 
 # 1.4 Aligning Strings
 print '|', "Left".ljust(20),'|', 'Right'.rjust(20), '|', 'Center'.center(20),'|'
