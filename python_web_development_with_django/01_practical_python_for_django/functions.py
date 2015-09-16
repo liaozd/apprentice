@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+
+# P.40
 import httplib
 
 
-def check_web_server(host, port, path):
+def check_web_server(host, port, path, *args, **kwargs):
     h = httplib.HTTPConnection(host, port)
     h.request('GET', path)
     resp = h.getresponse()
@@ -13,6 +15,7 @@ def check_web_server(host, port, path):
     print 'HTTP Headers:'
     for hdr in resp.getheaders():
         print '    %s: %s' % hdr
+    print args, kwargs
 
 check_web_server('www.python.org', 80, '/')
 
@@ -38,3 +41,21 @@ def filter(**bobargs):
     print type(bobargs)
 
 filter(**bobargs)
+
+
+# P.43 Decorators
+print "\nDecorators"
+
+
+def log(func):
+    def wrappedFunc():
+        print "*** %s() called ***" % func.__name__
+        return func()
+    return wrappedFunc
+
+
+@log
+def foo():
+    print "inside foo()"
+
+foo()
