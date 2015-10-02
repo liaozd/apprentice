@@ -9,7 +9,7 @@ __pycache__/
 *.so
 *.o
 *.swp
-a.out
+*.out
 
 
 
