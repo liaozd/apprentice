@@ -11,8 +11,6 @@ __pycache__/
 *.swp
 *.out
 
-
-
 # Distribution / packaging
 .Python
 env/

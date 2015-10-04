@@ -102,3 +102,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = '/git-repos/apprentice/python/python_web_development_with_django/07_photo_gallery/gallery/media'
