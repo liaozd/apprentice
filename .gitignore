@@ -61,10 +61,13 @@ docs/_build/
 # PyBuilder
 target/
 
-#Pycharm
+# Pycharm Settings
 .idea/
 
-# keyfile
+# Django migrations folder
+migrations/
+
+# Keyfile
 keyfile.py
 
 # database file
@@ -73,3 +76,6 @@ keyfile.py
 
 # django static build forlder
 _build
+
+# Media file
+*.jpg

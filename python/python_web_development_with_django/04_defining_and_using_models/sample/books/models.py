@@ -12,7 +12,8 @@ class Book(models.Model):
     title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100, null=True)
     num_pages = models.IntegerField(null=True)
-    authors = models.ManyToManyField(Author)
+    authors = models.ForeignKey(Author)
+    # authors = models.ManyToManyField(Author)
 
     def __unicode__(self):
         return self.title
