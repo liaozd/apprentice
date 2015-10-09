@@ -54,13 +54,18 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'gallery.urls'
 
+ROOT_URL = '/gallery/'
+
+LOGIN_URL = ROOT_URL + 'login/'
+MEDIA_URL = ROOT_URL + 'media/'
+ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
+        'OPTIONS': { 'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

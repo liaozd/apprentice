@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from settings import ROOT_URL
+
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^%s' % ROOT_URL[1:], include('gallery.real_urls')),
+#    url(r'^admin/', include(admin.site.urls)),
 ]
