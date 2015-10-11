@@ -5,10 +5,12 @@ from django.contrib.auth.models import User
 
 VIEWABLE_STATUS = [3, 4]
 
+
 class ViewableManager(models.Manager):
     def get_query_set(self):
         default_queryset = super(ViewableManager, self).get_query_set()
         return default_queryset.filter(status__in=VIEWABLE_STATUS)
+
 
 class Category(models.Model):
     label = models.CharField(blank=True, max_length=50)
@@ -42,7 +44,7 @@ class Story(models.Model):
     modified = models.DateTimeField(default=datetime.datetime.now)
 
     class Meta:
-        ordring = ['modified']
+        ordering = ['modified']
         verbose_name_plural = "stories"
 
     @permalink

@@ -4,6 +4,7 @@ from django.db.models import permalink
 
 from item.fields import ThumbnailImageField
 
+
 class Item(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField()
