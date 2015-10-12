@@ -13,17 +13,12 @@ def containsAny1(seq, aset):
     Check whether sequence seq contains ANY of the items in aset.
     """
     for c in seq:
-        if c in aset: return True
+        if c in aset:
+            return True
     return False
 
-t1 = Timer("containsAny1(seq, aset)", "from __main__ import containsAny1, seq, aset")
-print "containsAny1 time: ", t1.timeit()
 
-
-# cookbook says this a quick way, but it doesn't, why?
 import itertools
-
-
 def containsAny2(seq, aset):
     for item in itertools.ifilter(aset.__contains__, seq):
         """
@@ -114,6 +109,3 @@ print no_digits('Chris Perkins: 224-7992')
 # repace a set of characters
 digits_to_hash = translator(frm=string.digits, to='#')
 print digits_to_hash('Chris Perkins: 224-7992')
-
-
-# 1.10 Filtering a String for a Set of Characters #

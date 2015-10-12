@@ -63,7 +63,7 @@ target/
 .idea/
 
 # Django migrations folder
-migrations/
+# migrations/
 
 # Keyfile
 keyfile.py

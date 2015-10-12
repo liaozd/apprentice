@@ -1,11 +1,11 @@
-__author__ = 'liao'
+#!/usr/bin/env python
 
 # 1.1 Processing a String One Character at a Time
 print "C1.1"
 thestring = "abcdefghijklmn"
 
 # list comprehension
-resultA = [ c+"." for c in thestring]
+resultA = [ c+"." for c in thestring ]
 
 import sets
 magic_chars = sets.Set('abracadabra')
@@ -24,12 +24,14 @@ print ''.join(map(chr, range(97,120)))
 
 # 1.3 Testing Whether an Object Is String-like
 print "C1.3"
+
+
 def isAString(anobj):
     return isinstance(anobj, basestring)
 
 
 def isExactlyAString(anobj):
-    # unicode will fail
+    # bad approach, unicode test fail
     return type(anobj) is type('')
 
 u_str = unicode('abcde')
@@ -38,9 +40,11 @@ print isAString(u_str), isExactlyAString(u_str)
 
 
 def isStringLike(anobj):
-    # this method is because basestring does not include "UserString"
+    # the general Python approach to type-checking is known as
+    # duck typing: if it walks like a duck and quacks like a duck,
+    # it's duck-like enough for our purpose.
     try:
-        anobj + ''
+        anobj.lower() + anobj + ''
     except:
         return False
     else:

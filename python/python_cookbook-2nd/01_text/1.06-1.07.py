@@ -1,17 +1,22 @@
-__author__ = 'liao'
+#!/usr/bin/env python
 
 # 1.6 Combining Strings
-
 pieces = ['small1', 'small2', 'small3']
 largeString = ''.join(pieces)
 print largeString
-
+'''
+When you have many small string pieces in a sequence, performance can become a
+truly important issue. The time needed to execute a loop using + or += (or a fancier
+but equivalent approach using the built-in function reduce ) grows with the square of
+the number of characters you are accumulating, since the time to allocate and fill a
+large string is roughly proportional to the length of that string. Fortunately, Python
+offers an excellent alternative.
+'''
 
 largeString = ''
 for piece in pieces:
     largeString += piece
 print largeString
-
 
 # or, equivalently, but more fancifully and compactly:
 import operator
@@ -35,7 +40,7 @@ print revwords
 revwords = ' '.join(astring.split()[::-1])
 print "one-liners:", revwords
 
-# preserving untouched the intermediate whitespace
+# preserving untouched the intermediate whitespaces
 import re
 revwords = re.split(r'(\s+)', astring)
 print revwords
