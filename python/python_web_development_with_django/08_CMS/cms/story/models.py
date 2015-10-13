@@ -2,13 +2,14 @@ import datetime
 from django.db import models
 from django.db.models import permalink
 from django.contrib.auth.models import User
+from markdown import markdown
 
 VIEWABLE_STATUS = [3, 4]
 
 
 class ViewableManager(models.Manager):
-    def get_query_set(self):
-        default_queryset = super(ViewableManager, self).get_query_set()
+    def get_queryset(self):
+        default_queryset = super(ViewableManager, self).get_queryset()
         return default_queryset.filter(status__in=VIEWABLE_STATUS)
 
 
@@ -46,6 +47,14 @@ class Story(models.Model):
     class Meta:
         ordering = ['modified']
         verbose_name_plural = "stories"
+
+    admin_objects = models.Manager() # default manager and used by the admin
+    objects = ViewableManager
+
+    def save(self):
+        self.html_content = markdown(self.markdown_content)
+        self.modified = datetime.datetime.now()
+        super(Story, self).save()
 
     @permalink
     def get_absolute_url(self):
