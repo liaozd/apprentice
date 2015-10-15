@@ -1,3 +1,0 @@
-Practical-minded developers are rightfully cautious about
- reinventing the wheel, but it can be that your specific wheel
- hasn’t been invented yet.
