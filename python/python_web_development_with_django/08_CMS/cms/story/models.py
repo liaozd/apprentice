@@ -49,7 +49,7 @@ class Story(models.Model):
         verbose_name_plural = "stories"
 
     admin_objects = models.Manager() # default manager and used by the admin
-    objects = ViewableManager
+    objects = ViewableManager()
 
     def save(self):
         self.html_content = markdown(self.markdown_content)
