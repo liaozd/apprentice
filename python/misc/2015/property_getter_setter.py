@@ -42,5 +42,7 @@ class PositivePropertyNum(object):
 
 ppn = PositivePropertyNum(100)
 print ppn.value
+ppn.value = -100
+print ppn.value
 
 
