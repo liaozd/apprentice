@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-import zipfile, tempfile, os, sys
+import os
+import sys
+import tempfile
+import zipfile
 
 handle, filename = tempfile.mkstemp('.zip')
 os.close(handle)
@@ -12,5 +15,6 @@ z.writestr('hello.py', 'def f(): return "hello world from "+__file__\n')
 z.close()
 sys.path.insert(0, filename)
 import hello
+
 print hello.f()
 os.unlink(filename)
