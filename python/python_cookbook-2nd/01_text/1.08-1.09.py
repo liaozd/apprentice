@@ -29,14 +29,16 @@ def containsAny2(seq, aset):
         """
         return True
     return False
-t2 = Timer("containsAny2(seq, aset)", "from __main__ import containsAny2, seq, aset")
+t2 = Timer("containsAny2(seq, aset)",
+           "from __main__ import containsAny2, seq, aset")
 print "containsAny2 time: ", t2.timeit()
 
 
 # a pure set-based approach #
 def containsAny3(seq, aset):
     return bool(set(aset).intersection(seq))
-t3 = Timer("containsAny3(seq, aset)", "from __main__ import containsAny3, seq, aset")
+t3 = Timer("containsAny3(seq, aset)",
+           "from __main__ import containsAny3, seq, aset")
 print "containsAny3 time: ", t3.timeit()
 print
 print "set(aset).intersection(seq):", set(aset).intersection(seq)
@@ -87,7 +89,7 @@ print "containsAnyStr time: ", t4.timeit()
 # 1.9 Simplifying Usage of Strings’ translate Method #
 def translator(frm='', to='', delete='', keep=None):
     if len(to) == 1:
-        to = to * len(frm)
+        to *= len(frm)
     trans = string.maketrans(frm, to)
     if keep is not None:
         allchars = string.maketrans('', '')
