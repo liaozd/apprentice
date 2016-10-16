@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 
 # https://wiki.python.org/moin/PythonDecoratorLibrary
 
@@ -40,8 +41,6 @@ print double(155)
 # Property Definition
 print '# Property Definition'
 
-import sys
-
 
 def propget(func):
     locals = sys._getframe(1).f_locals
@@ -76,6 +75,7 @@ def propdel(func):
     else:
         prop = property(prop.fget, prop.fset, func, prop.__doc__)
     return prop
+
 
 class Example(object):
 

@@ -14,7 +14,7 @@ class MyClass(APIBaseClassOne):
     pass
 
 
-class MixedClass(SomeMixin , MyClass,):
+class MixedClass(SomeMixin, MyClass,):
     pass
 
 
