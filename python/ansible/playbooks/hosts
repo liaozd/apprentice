@@ -1,1 +1,2 @@
-testserver ansible_ssh_host=192.168.0.103 ansible_ssh_user=pi ansible_ssh_private_key_file=$HOME/.ssh/id_rsa
+testserver ansible_ssh_host=192.168.0.103
+
