@@ -1,2 +1,1 @@
-testserver ansible_ssh_host=192.168.0.103
-
+piserver ansible_ssh_host=192.168.0.103

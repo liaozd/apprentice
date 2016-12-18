@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # use hosts file
-ansible testserver -i hosts -m command -a uptime
+ansible piserver -i hosts -m command -a uptime
 
 # use ansible.cfg file
-ansible testserver -m ping
+ansible piserver -m ping
+
+# install nginx
+ansible piserver -s -m apt -a "name=nginx update_cache=yes"
