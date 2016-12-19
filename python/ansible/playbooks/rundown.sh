@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
+# Start a test docker server
+docker run -d -p 2222:22 -ti ubuntu-ssh-server
+
 # use hosts file
-ansible piserver -i hosts -m command -a uptime
+ansible docker-server -i hosts -m command -a uptime
 
 # use ansible.cfg file
-ansible piserver -m ping
+ansible docker-server -m ping
 
 # install nginx
-ansible piserver -s -m apt -a "name=nginx update_cache=yes"
+ansible docker-server -s -m apt -a "name=nginx update_cache=yes"

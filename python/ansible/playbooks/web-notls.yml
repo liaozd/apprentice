@@ -1,5 +1,5 @@
 - name: Configure webserver with nginx
-  hosts: piserver
+  hosts: docker-server
   sudo: True
   tasks:
     - name: install nginx
