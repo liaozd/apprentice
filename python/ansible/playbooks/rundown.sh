@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# Build one test server
+docker build -t ubuntu-ssh-server .
+
 # Start a test docker server
-docker run -d -p 2222:22 -ti ubuntu-ssh-server
+docker run -d -p 2222:22 ubuntu-ssh-server
 
 # use hosts file
 ansible docker-server -i hosts -m command -a uptime
