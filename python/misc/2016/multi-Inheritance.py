@@ -18,4 +18,9 @@ class MixedClass(SomeMixin, MyClass,):
     pass
 
 
+class MyClassFirstClass(MyClass, SomeMixin,):
+    pass
+
 m = MixedClass()
+print "=" * 20
+MyClassFirstClass()
