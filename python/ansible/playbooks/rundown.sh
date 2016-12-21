@@ -14,3 +14,6 @@ ansible docker-server -m ping
 
 # install nginx
 ansible docker-server -s -m apt -a "name=nginx update_cache=yes"
+
+# host pi server
+ansible pi-server -m ping
