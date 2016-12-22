@@ -1,0 +1,12 @@
+- name: Configure the pi server
+  hosts: pi-server
+  become_user: root
+  tasks:
+    - name: link a file
+      file: >
+        dest=/home/pi/ansible-test/t-link.txt
+        src=/home/pi/ansible-test/t.txt
+        state=link
+
+    - name: install app tree
+      apt: name=tree update_cache=no
