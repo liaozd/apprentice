@@ -32,3 +32,6 @@ ansible-playbook web-tls.yml
 # Ansible automactically defines a group called `all` or `*` include all of the hosts in the inventory
 ansible all -a "date"
 ansible '*' -a "date"
+
+# Capture command return
+ansible-playbook whoami.yml
