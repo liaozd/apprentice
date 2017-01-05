@@ -5,6 +5,8 @@ docker build -t ubuntu-ssh-server .
 
 # Start a test docker server
 docker run -d -p 2222:22 -p 8080:80 -p 8443:443 ubuntu-ssh-server
+docker run -d -p 2223:22 -p 8081:80 -p 8444:443 ubuntu-ssh-server
+docker run -d -p 2224:22 -p 8082:80 -p 8445:443 ubuntu-ssh-server
 
 # ssh into the ubuntu-ssh-server
 sshpass -p 'screencast' ssh -p 2222 root@localhost
@@ -26,3 +28,7 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout
 
 # Start a tls
 ansible-playbook web-tls.yml
+
+# Ansible automactically defines a group called `all` or `*` include all of the hosts in the inventory
+ansible all -a "date"
+ansible '*' -a "date"
