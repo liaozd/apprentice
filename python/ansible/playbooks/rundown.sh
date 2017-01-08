@@ -35,3 +35,11 @@ ansible '*' -a "date"
 
 # Capture command return
 ansible-playbook whoami.yml
+
+# Viewing All Facts Associated with a Server
+ansible pi-server -m setup
+# With filter parameter
+ansible pi-server -m setup -a "filter=ansible_eth*"
+
+# Setting Variables on the Command Line
+ansible-playbook greet.yml -e "greeting='hi there'"
