@@ -43,3 +43,4 @@ ansible pi-server -m setup -a "filter=ansible_eth*"
 
 # Setting Variables on the Command Line
 ansible-playbook greet.yml -e "greeting='hi there'"
+ansible-playbook greet.yml -e @greetvars.yml
