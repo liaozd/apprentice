@@ -1,1 +1,3 @@
-# 练习CODEs
+# My Practicing Codes
+
+Like a notebook
