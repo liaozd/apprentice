@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from cStringIO import StringIO
 import urllib2
+from cStringIO import StringIO
 
 
 class RewindableFile(object):
@@ -102,4 +102,3 @@ s = infile.readline()
 if s.startswith("ERROR:"):
     raise Exception(s[:-1])
 infile.nobuffer()
-
