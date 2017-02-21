@@ -14,7 +14,7 @@ class _const(object):
     def __delattr__(self, name):
         if name in self.__dict__:
             raise self.ConstError, "Can't delete const(%s)" % name
-        raise NameError, name
+        raise NameError, name  # prevent deleting ConstError
 
 import sys
 sys.modules[__name__] = _const()

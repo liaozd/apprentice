@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Sven Dowideit <SvenDowideit@docker.com>
 
+RUN sed -i "s/archive.ubuntu.com/cn.archive.ubuntu.com/g" /etc/apt/sources.list
 RUN apt-get update && apt-get install -y openssh-server python
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
