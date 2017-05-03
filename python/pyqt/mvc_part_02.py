@@ -37,6 +37,17 @@ class PalleteListModel(QtCore.QAbstractListModel):
             value = self.__color[row]
             return value.name()
 
+    def flags(self, QModelIndex):
+        return QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
+
+    def setData(self, index, value, role=QtCore.Qt.EditRole):
+        if role == QtCore.Qt.EditRole:
+            row = index.row()
+            color = QtGui.QColor(value)
+            if color.isValid():
+                self.__color[row] = color
+                return True
+        return False
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
