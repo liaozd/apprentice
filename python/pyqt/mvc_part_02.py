@@ -20,6 +20,9 @@ class PalleteListModel(QtCore.QAbstractListModel):
 
     def data(self, index, role):
 
+        if role == QtCore.Qt.EditRole:
+            return self.__color[index.row()].name()
+
         if role == QtCore.Qt.ToolTipRole:
             return "Hex code: " + self.__color[index.row()].name()
 
@@ -46,6 +49,7 @@ class PalleteListModel(QtCore.QAbstractListModel):
             color = QtGui.QColor(value)
             if color.isValid():
                 self.__color[row] = color
+                self.dataChanged.emit(index, index)
                 return True
         return False
 
