@@ -53,16 +53,26 @@ class PalleteListModel(QtCore.QAbstractListModel):
                 return True
         return False
 
+    def insertRows(self, position, rows, parent=QtCore.QModelIndex()):
+        self.beginInsertColumns(parent, position, position + rows - 1)
+        for i in range(rows):
+            self.__color.insert(position, QtGui.QColor("#000000"))
+        self.endInsertRows()
+
+    def removeRows(self, position, rows, parent=QtCore.QModelIndex()):
+        self.beginRemoveRows(parent, position, position + rows - 1)
+        for i in range(rows):
+            value = self.__color[position]
+            self.__color.remove(value)
+        self.endRemoveRows()
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle('plastique')
 
     listView = QtWidgets.QListView()
-
     treeView = QtWidgets.QTreeView()
-
     comboBox = QtWidgets.QComboBox()
-
     tableView = QtWidgets.QTableView()
 
     red = QtGui.QColor(255, 0, 0)
@@ -75,6 +85,9 @@ if __name__ == '__main__':
     treeView.setModel(model)
     comboBox.setModel(model)
     tableView.setModel(model)
+
+    model.insertRows(0, 5)
+    model.removeRows(0, 5)
 
     listView.show()
     treeView.show()
