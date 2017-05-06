@@ -5,7 +5,7 @@ import sys
 class PalleteListModel(QtCore.QAbstractListModel):
     def __init__(self, colors=[], parent=None):
         super(PalleteListModel, self).__init__(parent)
-        self.__color = colors
+        self.__colors = colors
 
     def headerData(self, section, orientation, role=None):
         if role == QtCore.Qt.DisplayRole:
@@ -16,19 +16,19 @@ class PalleteListModel(QtCore.QAbstractListModel):
                 return "Color %s" % section
 
     def rowCount(self, parent):
-        return len(self.__color)
+        return len(self.__colors)
 
     def data(self, index, role):
 
         if role == QtCore.Qt.EditRole:
-            return self.__color[index.row()].name()
+            return self.__colors[index.row()].name()
 
         if role == QtCore.Qt.ToolTipRole:
-            return "Hex code: " + self.__color[index.row()].name()
+            return "Hex code: " + self.__colors[index.row()].name()
 
         if role == QtCore.Qt.DecorationRole:
             row = index.row()
-            value = self.__color[row]
+            value = self.__colors[row]
 
             pixmap = QtGui.QPixmap(26, 26)
             pixmap.fill(value)
@@ -37,7 +37,7 @@ class PalleteListModel(QtCore.QAbstractListModel):
 
         if role == QtCore.Qt.DisplayRole:
             row = index.row()
-            value = self.__color[row]
+            value = self.__colors[row]
             return value.name()
 
     def flags(self, QModelIndex):
@@ -48,7 +48,7 @@ class PalleteListModel(QtCore.QAbstractListModel):
             row = index.row()
             color = QtGui.QColor(value)
             if color.isValid():
-                self.__color[row] = color
+                self.__colors[row] = color
                 self.dataChanged.emit(index, index)
                 return True
         return False
@@ -56,14 +56,14 @@ class PalleteListModel(QtCore.QAbstractListModel):
     def insertRows(self, position, rows, parent=QtCore.QModelIndex()):
         self.beginInsertColumns(parent, position, position + rows - 1)
         for i in range(rows):
-            self.__color.insert(position, QtGui.QColor("#000000"))
+            self.__colors.insert(position, QtGui.QColor("#000000"))
         self.endInsertRows()
 
     def removeRows(self, position, rows, parent=QtCore.QModelIndex()):
         self.beginRemoveRows(parent, position, position + rows - 1)
         for i in range(rows):
-            value = self.__color[position]
-            self.__color.remove(value)
+            value = self.__colors[position]
+            self.__colors.remove(value)
         self.endRemoveRows()
 
 if __name__ == '__main__':
