@@ -41,6 +41,7 @@ ptyprocess==0.5
 pyasn1==0.1.9
 pycparser==2.14
 pycrypto==2.6.1
+Pygments==2.2.0
 pyparsing==2.1.10
 pytz==2016.10
 PyYAML==3.12

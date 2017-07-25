@@ -1,14 +1,13 @@
-from django.conf.urls import url, include
+from django.conf.urls import include
+from django.conf.urls import url
 from django.contrib import admin
 from rest_framework import routers
 
 from tutorial.quickstart import views
-from snippets import views as snippets_views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-# router.register(r'snippet_detail', snippets_views.snippet_detail)
 
 
 urlpatterns = [
