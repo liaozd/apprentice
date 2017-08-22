@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://code.jquery.com/jquery-1.12.4.min.js"
+          integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+          crossorigin="anonymous"></script>
+</head>
+<body>
+
+<p>WO.My Page</p>
+<p></p>
+
+<script>
+var str = $( "p:first" ).text();
+strArray = str.split('.')
+console.log(strArray[0].length);
+console.log(str.length);
+ if (str !== strArray[0])
+   $( "p:last" ).html( strArray[strArray.length-1] );
+</script>
+
+</body>
+</html>
