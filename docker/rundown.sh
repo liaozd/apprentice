@@ -45,3 +45,23 @@ docker run -v /tmp/.X11-unix:/tmp/.X11-unix \
 -h $HOSTNAME \
 -v $HOME/.Xauthority:/home/$USER/.Xauthority \
 gui
+
+
+# TECHNIQUE 27 Inspecting containers
+docker ps -aq | xargs docker inspect --format='{{.NetworkSettings.IPAddress}}' | xargs -l1 ping -c1
+
+# Forcing a rebuild without using the cache
+docker build --no-cache .
+
+# List the error exited containers
+comm -3 \
+<(docker ps -a -q --filter=status=exited | sort) \
+<(docker ps -a -q --filter=exited=0 | sort) | \
+xargs --no-run-if-empty docker inspect > error_containers
+
+# TECHNIQUE 35 Housekeeping volumes
+# https://github.com/docker-in-practice/docker-cleanup-volumes
+docker run \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /var/lib/docker:/var/lib/docker \
+--privileged dockerinpractice/docker-cleanup-volumes
