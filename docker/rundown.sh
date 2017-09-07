@@ -65,3 +65,6 @@ docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /var/lib/docker:/var/lib/docker \
 --privileged dockerinpractice/docker-cleanup-volumes
+
+# TECHNIQUE 38 Generate a dependency graph of your Docker images
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock   centurylink/image-graph > docker_images.png
