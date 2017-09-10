@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="css/default.css" type="text/css" />
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var $cr = $("#cr");     // jQuery对象
+      var cr = $cr[0];  　　 　// 转换为DOM对象，或者使用$cr.get(0)
+      $cr.click(function () {
+        if(cr.checked){　　　　// DOM方式　　jQuery方式：　if($cr.is(":check"))
+          alert("感谢您的支持！")
+        }
+      })
+    })
+  </script>
+</head>
+<body>
+<input type="checkbox" id="cr"/><label for="cr">我已经阅读了上面的制度。</label>
+</body>
+</html>
