@@ -113,5 +113,14 @@ $(document).ready(function () {
     $('.url-input').val('');
 
     blogs.add(blog);
+
+    blog.save(null,  {
+      success: function (response) {
+        console.log('Successfully SAVED blog with _id ' + response.toJSON()._id);
+      },
+      error: function () {
+        console.log('Failed to save blog!')
+      }
+    });
   })
 }); 

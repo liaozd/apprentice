@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/blogroll');
@@ -14,17 +15,10 @@ var BlogSchema = new Schema({
 mongoose.model('Blog', BlogSchema);
 
 var Blog = mongoose.model('Blog');
-
-var blog = new Blog({
-  author: 'Mi',
-  title: 'Title',
-  url: 'http:'
-});
-
-blog.save();
-
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 
 // ROUTES
 
@@ -34,10 +28,19 @@ app.get('/api/blogs', function (req, res) {
       console.log('Received a GET request for _id: ' + item._id);
     });
     res.send(docs);
-  })
+  });
 });
 
-app.use(express.static(__dirname + '/public'));
+app.post('/api/blogs', function (req, res) {
+  console.log('Received a POST request');
+  for (var key in req.body) {
+    console.log(key + ': ' + req.body[key]);
+  }
+  var blog = new Blog(req.body);
+  blog.save(function (err, doc) {
+    res.send(doc);
+  });
+});
 
 var port = 3000;
 
