@@ -9,7 +9,7 @@
 <template id="form">
     <div>
         <label for="name">What's your name?</label>
-        <input v-model="user" type="text" id="name">
+        <input v-bind:value='value' type="text" id="name" v-on:input="onInput">
     </div>
 </template>
 
@@ -19,7 +19,7 @@
 
 <div id="greetings">
     <div>
-        <form-component :user="user"></form-component>
+        <form-component v-model="user"></form-component>
         <hello-component v-bind:user="user"></hello-component>
     </div>
 </div>
@@ -33,7 +33,12 @@
     //注册form组件
     Vue.component('form-component', {
         template: '#form',
-        props: ['user']
+        props: ['value'],
+        methods: {
+            onInput: function (event) {
+                this.$emit('input', event.target.value)
+            }
+        }
     });
     //注册hello组件
     Vue.component('hello-component', {
