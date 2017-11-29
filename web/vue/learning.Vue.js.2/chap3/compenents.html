@@ -2,23 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>VUE</title>
 </head>
 <body>
 
-<template id="hello">
-    <h1>Hello</h1>
+<template id="form">
+    <div>
+        <label for="name">What's your name?</label>
+        <input v-model="user" type="text" id="name">
+    </div>
 </template>
 
+<template id="hello">
+    <h1>{{msg}} {{user}}</h1>
+</template>
+
+<div id="greetings">
+    <div>
+        <form-component :user="user"></form-component>
+        <hello-component v-bind:user="user"></hello-component>
+    </div>
+</div>
+
 <div id="app">
-    <hello-component></hello-component>
+    <greetings-component></greetings-component>
 </div>
 
 <script src="https://unpkg.com/vue"></script>
 <script>
-    //注册和初始化component放在一起
+    //注册form组件
+    Vue.component('form-component', {
+        template: '#form',
+        props: ['user']
+    });
+    //注册hello组件
     Vue.component('hello-component', {
-        template: '#hello'
+        template: '#hello',
+        data: function () {  //防止数据scope leak，组件中都是闭包
+            return {
+                msg: 'Hello'
+            }
+        },
+        props: ['user']
+    });
+    Vue.component('greetings-component', {
+        template: '#greetings',
+        data: function () {
+            return {
+                user: 'hero'
+            }
+        }
     });
     new Vue({
         el: '#app'
