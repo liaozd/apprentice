@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<template id="hello">
+    <h1>Hello</h1>
+</template>
+
+<div id="app">
+    <hello-component></hello-component>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    //注册和初始化component放在一起
+    Vue.component('hello-component', {
+        template: '#hello'
+    });
+    new Vue({
+        el: '#app'
+    });
+</script>
+
+</body>
+</html>
