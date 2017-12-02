@@ -7,10 +7,10 @@
 
 <script>
   export default {
-      date () {
-          return {
-              title: 'Learning Vue.js!'
-          }
+    data () {
+      return {
+        title: 'Learning Vue.js!'
       }
+    }
   }
 </script>
