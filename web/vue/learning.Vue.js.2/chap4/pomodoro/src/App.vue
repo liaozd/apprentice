@@ -6,9 +6,20 @@
     </h2>
     <state-title-component v-bind:isworking="isworking"></state-title-component>
     <countdown-component></countdown-component>
-    <kittens-component v-if="kittens"></kittens-component>
+    <transition name="fade">
+      <kittens-component v-if="kittens"></kittens-component>
+    </transition>
   </div>
 </template>
+
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
+</style>
 
 <script>
 import ControlsComponent from './components/ControlsComponent'
@@ -20,7 +31,6 @@ window.data = {
   isworking: true
 }
 export default {
-  name: 'app',
   components: {
     ControlsComponent,
     CountdownComponent,
@@ -32,14 +42,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
