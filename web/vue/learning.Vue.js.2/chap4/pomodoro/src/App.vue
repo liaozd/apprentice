@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="container">
     <h2>
-      <span>Pomodoro</span>
+      <span>{{ 'Pomodoro' | uppercase }}</span>
       <controls-component></controls-component>
     </h2>
-    <state-title-component></state-title-component>
+    <state-title-component v-bind:isworking="isworking"></state-title-component>
     <countdown-component></countdown-component>
-    <kittens-component></kittens-component>
+    <kittens-component v-if="kittens"></kittens-component>
   </div>
 </template>
 
@@ -15,7 +15,10 @@ import ControlsComponent from './components/ControlsComponent'
 import CountdownComponent from './components/CountdownComponent'
 import KittensComponent from './components/KittensComponent'
 import StateTitleComponent from './components/StateTitleComponent'
-
+window.data = {
+  kittens: true,
+  isworking: true
+}
 export default {
   name: 'app',
   components: {
@@ -23,6 +26,9 @@ export default {
     CountdownComponent,
     KittensComponent,
     StateTitleComponent
+  },
+  data () {
+    return window.data
   }
 }
 </script>
