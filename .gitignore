@@ -59,8 +59,9 @@ docs/_build/
 # PyBuilder
 target/
 
-# Pycharm Settings
+# IDE Settings
 .idea/
+.vscode/
 
 # Django migrations folder
 # migrations/
