@@ -43,7 +43,7 @@ pbr==1.8.1
 pep8==1.6.2
 pexpect==4.0.1
 pickleshare==0.5
-Pillow==3.0.0
+Pillow==6.2.0
 ptyprocess==0.5
 pyasn1==0.1.9
 pycparser==2.14
