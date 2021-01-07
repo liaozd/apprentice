@@ -29,7 +29,7 @@ itsdangerous==0.24
 itypes==1.1.0
 Jinja2==2.8
 kombu==4.1.0
-lxml==3.5.0
+lxml==4.6.2
 MarkupSafe==0.23
 marshmallow==3.0.0b2
 monotonic==1.2
