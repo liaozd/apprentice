@@ -1,0 +1,11 @@
+[project]
+name = "apprentice"
+version = "0.1.0"
+description = "个人算法练习仓库(LeetCode 刷题)"
+requires-python = ">=3.9"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["problems"]
